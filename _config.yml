@@ -26,7 +26,8 @@ exclude:
   - README.md
   - scripts/
   - not-pure-poole.gemspec
-
+  - dates.md
+  - tags.md
 # Optimize Jekyl SEO Tag
 twitter:
   username: yourtwitterusername  # 替换为你的Twitter用户名（可选）
