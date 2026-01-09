@@ -1,7 +1,7 @@
 # Setup
-title: Not Pure Poole
-description: A simple, beautiful, and powerful Jekyll theme for blogs
-url: https://vszhub.github.io
+title: Youhan Huang's Personal Homepage  # 替换为你的名字
+description: Personal homepage of Youhan Huang, a third-year undergraduate student with research interests in 3D computer vision, point cloud understanding, and AI applications  # 替换为你的网站描述
+url: https://youhanhuang.github.io  # 替换为你的GitHub Pages URL
 avatar: /avatar.jpeg
 paginate: 5
 permalink: pretty
@@ -29,16 +29,15 @@ exclude:
 
 # Optimize Jekyl SEO Tag
 twitter:
-  username: vszhub
+  username: yourtwitterusername  # 替换为你的Twitter用户名（可选）
   card: summary
 logo: logo.png
 social:
-  name: Songzi Vong
+  name: Youhan Huang  # 替换为你的名字
   links:
-    - https://twitter.com/vszhub
-    - https://github.com/vszhub
-google_site_verification: xxxxx
-lang: en
+    - https://github.com/youhanhuang  # 保留你的GitHub链接
+google_site_verification: xxxxx  # 如果你有Google验证代码，可以添加
+lang: en  # 设置为英文
 
 sass:
   sass_dir: _sass
@@ -54,6 +53,6 @@ sass:
 
 # Specify the author for blog posts
 author:
-  name: Songzi Vong
-  url: https://github.com/vszhub/
-  email: vszhub@gmail.com
+  name: Youhan Huang  # 替换为你的名字
+  url: https://github.com/youhanhuang/  # 替换为你的GitHub或个人网站
+  email: youhan.huang@se23.qmul.ac.uk  # 替换为你的邮箱
