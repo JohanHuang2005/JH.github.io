@@ -47,14 +47,30 @@
       document.addEventListener('DOMContentLoaded', function() {
         // 定义背景图片数组（已重命名为数字）
         const backgroundImages = [
-          '/bg/1.jpg', '/bg/2.jpg', '/bg/3.jpg', '/bg/4.jpg', '/bg/5.jpg',
-          '/bg/6.jpg', '/bg/7.jpg', '/bg/8.jpg', '/bg/9.jpg', '/bg/10.jpg',
-          '/bg/11.jpg', '/bg/12.jpg', '/bg/13.jpg', '/bg/14.jpg', '/bg/15.jpg',
-          '/bg/16.jpg', '/bg/17.jpg', '/bg/18.jpg', '/bg/19.jpg', '/bg/20.jpg'
+          '{{ "bg/1.jpg" | relative_url }}',
+          '{{ "bg/2.jpg" | relative_url }}',
+          '{{ "bg/3.jpg" | relative_url }}',
+          '{{ "bg/4.jpg" | relative_url }}',
+          '{{ "bg/5.jpg" | relative_url }}',
+          '{{ "bg/6.jpg" | relative_url }}',
+          '{{ "bg/7.jpg" | relative_url }}',
+          '{{ "bg/8.jpg" | relative_url }}',
+          '{{ "bg/9.jpg" | relative_url }}',
+          '{{ "bg/10.jpg" | relative_url }}',
+          '{{ "bg/11.jpg" | relative_url }}',
+          '{{ "bg/12.jpg" | relative_url }}',
+          '{{ "bg/13.jpg" | relative_url }}',
+          '{{ "bg/14.jpg" | relative_url }}',
+          '{{ "bg/15.jpg" | relative_url }}',
+          '{{ "bg/16.jpg" | relative_url }}',
+          '{{ "bg/17.jpg" | relative_url }}',
+          '{{ "bg/18.jpg" | relative_url }}',
+          '{{ "bg/19.jpg" | relative_url }}',
+          '{{ "bg/20.jpg" | relative_url }}'
         ];
         
-        // 获取侧边栏的正确元素
-        const sidebar = document.querySelector('.sidebar-left');
+        // 获取侧边栏的正确元素（使用ID选择器）
+        const sidebar = document.getElementById('sidebar-left');
         
         // 确保侧边栏元素存在
         if (!sidebar) {
@@ -62,54 +78,25 @@
           return;
         }
         
-        // 设置侧边栏为相对定位，以便背景图片能正确显示
-        sidebar.style.position = 'relative';
-        sidebar.style.zIndex = '1';
-        
-        // 确保侧边栏背景样式正确
-        sidebar.style.backgroundSize = 'cover';
-        sidebar.style.backgroundPosition = 'center';
-        sidebar.style.backgroundRepeat = 'no-repeat';
-        sidebar.style.transition = 'opacity 0.5s ease-in-out';
+        // 设置背景过渡效果
+        sidebar.style.transition = 'background-image 0.5s ease-in-out';
         
         let currentIndex = 0;
         
         // 更换背景图片的函数
         function changeBackground() {
-          // 淡入淡出效果
-          sidebar.style.opacity = '0.7';
+          // 更换背景图片
+          sidebar.style.backgroundImage = `url(${backgroundImages[currentIndex]})`;
           
-          setTimeout(() => {
-            // 更换背景图片
-            sidebar.style.backgroundImage = `url(${backgroundImages[currentIndex]})`;
-            
-            // 淡入效果
-            setTimeout(() => {
-              sidebar.style.opacity = '1';
-            }, 300);
-            
-            // 更新索引
-            currentIndex = (currentIndex + 1) % backgroundImages.length;
-          }, 500);
+          // 更新索引
+          currentIndex = (currentIndex + 1) % backgroundImages.length;
         }
 
         // 设置初始背景（使用第一张图片）
         sidebar.style.backgroundImage = `url(${backgroundImages[0]})`;
         
-        // 调试：检查图片路径是否正确
-        console.log('Background images loaded:', backgroundImages);
-        console.log('Current background:', backgroundImages[0]);
-        console.log('Sidebar element:', sidebar);
-        console.log('Sidebar background style:', sidebar.style.backgroundImage);
-        
         // 设置定时器，每5秒更换一次背景
         setInterval(changeBackground, 5000);
-        
-        // 首次更换背景（2秒后开始）
-        setTimeout(() => {
-          currentIndex = 1; // 从第二张图片开始
-          changeBackground();
-        }, 2000);
       });
     </script>
   </body>
