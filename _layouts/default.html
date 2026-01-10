@@ -94,7 +94,8 @@
         // 设置背景过渡效果
         sidebar.style.transition = 'opacity 1.5s ease-in-out';
         
-        let currentIndex = 0;
+        // 从随机起始点开始
+        let currentIndex = Math.floor(Math.random() * backgroundImages.length);
         
         // 更换背景图片的函数
         function changeBackground() {
@@ -107,13 +108,13 @@
             // 恢复透明度
             sidebar.style.opacity = '1';
             
-            // 更新索引
+            // 更新索引（顺序播放，循环）
             currentIndex = (currentIndex + 1) % backgroundImages.length;
           }, 1500);
         }
 
-        // 设置初始背景（使用第一张图片）
-        sidebar.style.backgroundImage = `url(${backgroundImages[0]})`;
+        // 设置初始背景（使用随机起始图片）
+        sidebar.style.backgroundImage = `url(${backgroundImages[currentIndex]})`;
         sidebar.style.opacity = '1';
         
         // 设置定时器，每30秒更换一次背景
