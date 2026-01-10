@@ -21,8 +21,10 @@
 
   const forceCheckScroll = sessionStorage.getItem('forceCheckScroll') === 'true';
   const checkScroll = strip(window.location.pathname, '/') !== strip('{{ site.baseurl }}', '/');
+  const hasAnchor = window.location.hash !== '';
 
-  if (forceCheckScroll || checkScroll) {
+  // Don't scroll if URL has an anchor
+  if ((forceCheckScroll || checkScroll) && !hasAnchor) {
     const maxWidth = "(max-width: 48rem)";
     const result = window.matchMedia(maxWidth);
     if (result.matches) {
