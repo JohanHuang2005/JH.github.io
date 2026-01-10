@@ -49,6 +49,11 @@
     display: block;
     text-decoration: none;
     color: var(--body-color);
+    transition: color 0.2s;
+  }
+
+  a:hover {
+    color: var(--link-color);
   }
 
   ul {
@@ -56,20 +61,36 @@
 
     li {
       font-weight: bold;
+      font-size: 1em;
 
       a {
-        padding-top: .2em;
-        padding-bottom: .2em;
+        padding-top: .3em;
+        padding-bottom: .3em;
         padding-left: .5em;
         padding-right: .5em;
-        border-bottom: 1px solid var(--border-color);
       }
     }
   }
 
-  li ul li a {
+  li ul {
+    padding-left: 1em;
+  }
+
+  li ul li {
     font-weight: normal;
-    padding-left: 1.25em;
-    padding-right: .5em;
+    font-size: 0.9em;
+
+    a {
+      padding-top: .2em;
+      padding-bottom: .2em;
+    }
+  }
+
+  li ul li ul {
+    padding-left: 1em;
+  }
+
+  li ul li ul li {
+    font-size: 0.85em;
   }
 }

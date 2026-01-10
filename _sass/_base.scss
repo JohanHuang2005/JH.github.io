@@ -2,6 +2,26 @@
 //
 // Update the foundational and global aspects of the page.
 
+// Hide scrollbar but keep functionality
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+}
+
 * {
   box-sizing: border-box;
 }

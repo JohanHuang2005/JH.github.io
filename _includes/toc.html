@@ -121,7 +121,7 @@
         {% capture anchor_body %}{{ anchor_body | replace: "|", "\|" }}{% endcapture %}
 
         {% if html_id %}
-            {% capture list_item %}[{{ anchor_body }}]({% if include.baseurl %}{{ include.baseurl }}{% endif %}#{{ html_id }}){% endcapture %}
+            {% capture list_item %}<a href="#{{ html_id }}">{{ anchor_body }}</a>{% endcapture %}
         {% elsif skipNoIDs == true %}
             {% continue %}
         {% else %}
