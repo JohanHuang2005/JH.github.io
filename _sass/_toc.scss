@@ -41,6 +41,7 @@
   ul {
     margin: 0;
     padding: 0;
+    list-style: none;
   }
 
   a {
@@ -56,41 +57,70 @@
     color: var(--link-color);
   }
 
-  ul {
-    list-style: none;
+  /* Level 1 (h2) */
+  > ul > li {
+    font-weight: bold;
+    font-size: 0.95em;
+    margin-bottom: 0.5em;
 
-    li {
-      font-weight: bold;
-      font-size: 1em;
+    > a {
+      padding-top: .4em;
+      padding-bottom: .4em;
+      padding-left: .8em;
+      padding-right: .8em;
+      border-left: 3px solid var(--link-color);
+    }
+  }
 
-      a {
+  /* Level 2 (h3) */
+  > ul > li > ul {
+    padding-left: 1.2em;
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
+
+    > li {
+      font-weight: 600;
+      font-size: 0.85em;
+      margin-bottom: 0.3em;
+
+      > a {
         padding-top: .3em;
         padding-bottom: .3em;
-        padding-left: .5em;
-        padding-right: .5em;
+        padding-left: .6em;
+        padding-right: .6em;
+        border-left: 2px solid var(--border-color);
       }
     }
   }
 
-  li ul {
-    padding-left: 1em;
-  }
+  /* Level 3 (h4) */
+  > ul > li > ul > li > ul {
+    padding-left: 1.2em;
+    margin-top: 0.2em;
+    margin-bottom: 0.3em;
 
-  li ul li {
-    font-weight: normal;
-    font-size: 0.9em;
+    > li {
+      font-weight: normal;
+      font-size: 0.8em;
+      margin-bottom: 0.2em;
 
-    a {
-      padding-top: .2em;
-      padding-bottom: .2em;
+      > a {
+        padding-top: .2em;
+        padding-bottom: .2em;
+        padding-left: .8em;
+        padding-right: .8em;
+        border-left: 1px solid var(--border-color);
+      }
     }
   }
 
-  li ul li ul {
-    padding-left: 1em;
+  /* Remove list markers */
+  ul {
+    list-style: none;
   }
 
-  li ul li ul li {
-    font-size: 0.85em;
+  /* Ensure all list items have no markers */
+  li {
+    list-style: none;
   }
 }
