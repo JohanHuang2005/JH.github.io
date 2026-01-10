@@ -130,13 +130,14 @@ a[href^="#fnref:"] {
 
 // Research tags
 .research-tags {
-  background-color: var(--gray-100);
+  background-color: var(--gray-200);
   border-left: 4px solid var(--accent-color);
   padding: 1rem;
   margin-bottom: 1.5rem;
   border-radius: 4px;
   font-size: 1rem;
   line-height: 1.4;
+  color: var(--text-color);
 }
 
 .research-tags strong {

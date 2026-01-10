@@ -5,24 +5,27 @@
       {% if page.url == '/' %}
         <!-- Manual TOC for index.html since page.content is empty -->
         <ul>
+          <li><a href="#research-interests-personal-statement">Research Interests & Personal Statement</a></li>
           <li><a href="#contact-information">Contact Information</a></li>
           <li><a href="#education-background">Education Background</a></li>
           <li><a href="#awards">Awards</a></li>
           <li><a href="#research-experience">Research Experience</a>
             <ul>
-              <li><a href="#research-internship-1">Research Internship</a></li>
-              <li><a href="#research-internship-2">Research Internship</a></li>
-              <li><a href="#project-leader-of-innovation-training-program">Project Leader of Innovation Training Program</a></li>
+              <li><a href="#research-internship-1">Research Internship 1</a></li>
+              <li><a href="#research-internship-2">Research Internship 2</a></li>
+              <li><a href="#research-internship-3">Research Internship 3</a></li>
+              <li><a href="#research-project">Research Project</a></li>
             </ul>
           </li>
           <li><a href="#projects">Projects</a>
             <ul>
-              <li><a href="#graphical-math-game-for-uk-students-java-based">Graphical Math Game for UK Students (Java-based)</a></li>
+              <li><a href="#graphical-math-game-design-for-kids-java-based">Graphical Math Game Design for Kids (Java-based)</a></li>
+              <li><a href="#singing-voice-classifier-machine-learning">Singing Voice Classifier</a></li>
+              <li><a href="#lidarcar-slam-navigation-system">LidarCar: SLAM & Navigation System</a></li>
               <li><a href="#ai-intro-lab">AI Intro Lab</a></li>
             </ul>
           </li>
           <li><a href="#skills">Skills</a></li>
-          <li><a href="#research-interests-personal-statement">Research Interests & Personal Statement</a></li>
         </ul>
       {% else %}
         {% include toc.html html=page.content h_min=2 h_max=4 sanitize=true %}
