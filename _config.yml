@@ -5,7 +5,7 @@ url: https://youhanhuang.github.io  # 替换为你的GitHub Pages URL
 avatar: /me.jpg
 paginate: 5
 permalink: pretty
-cover_image: /bg.jpeg
+# cover_image: /bg.jpeg  # 注释掉，使用JavaScript动态背景
 
 # Gems
 plugins:
