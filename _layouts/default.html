@@ -99,12 +99,14 @@
           }, 500);
         }
 
-        // 设置初始背景（使用第一张图片）
-        sidebar.style.backgroundImage = `url(${backgroundImages[0]})`;
+        // 确保侧边栏背景样式正确
         sidebar.style.backgroundSize = 'cover';
         sidebar.style.backgroundPosition = 'center';
         sidebar.style.backgroundRepeat = 'no-repeat';
-        sidebar.style.transition = 'opacity 0.5s ease-in-out, background-image 0.5s ease-in-out';
+        sidebar.style.transition = 'opacity 0.5s ease-in-out';
+        
+        // 设置初始背景（使用第一张图片）
+        sidebar.style.backgroundImage = `url(${backgroundImages[0]})`;
         
         // 设置定时器，每10秒更换一次背景
         setInterval(changeBackground, 10000);
