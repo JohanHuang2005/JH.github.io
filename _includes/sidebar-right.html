@@ -2,7 +2,29 @@
 <div  class="toc-wrapper">
   <h2 class="toc-title">Table of Contents</h2>
     <nav class="toc-nav">
-      {% include toc.html html=page.content h_min=2 h_max=4 sanitize=true %}
+      {% if page.url == '/' %}
+        <!-- Manual TOC for index.html since page.content is empty -->
+        <ul>
+          <li><a href="#contact-information">Contact Information</a></li>
+          <li><a href="#education-background">Education Background</a></li>
+          <li><a href="#awards">Awards</a></li>
+          <li><a href="#research-experience">Research Experience</a></li>
+          <ul>
+            <li><a href="#research-internship-1">Research Internship</a></li>
+            <li><a href="#research-internship-2">Research Internship</a></li>
+            <li><a href="#project-leader-of-innovation-training-program">Project Leader of Innovation Training Program</a></li>
+          </ul>
+          <li><a href="#projects">Projects</a></li>
+          <ul>
+            <li><a href="#graphical-math-game-for-uk-students-java-based">Graphical Math Game for UK Students (Java-based)</a></li>
+            <li><a href="#ai-intro-lab">AI Intro Lab</a></li>
+          </ul>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#research-interests-personal-statement">Research Interests & Personal Statement</a></li>
+        </ul>
+      {% else %}
+        {% include toc.html html=page.content h_min=2 h_max=4 sanitize=true %}
+      {% endif %}
   </nav>
 </div>
 {% endif %}
