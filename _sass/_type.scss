@@ -137,9 +137,9 @@ a[href^="#fnref:"] {
   border-radius: 4px;
   font-size: 1rem;
   line-height: 1.4;
-  color: var(--text-color);
+  color: #333; /* Dark gray for better readability on light background */
 }
 
 .research-tags strong {
-  color: var(--heading-color);
+  color: #222; /* Even darker for emphasized text */
 }
