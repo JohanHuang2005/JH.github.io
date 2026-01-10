@@ -127,3 +127,18 @@ a[href^="#fnref:"] {
   font-size: 1.25rem;
   font-weight: 300;
 }
+
+// Research tags
+.research-tags {
+  background-color: var(--gray-100);
+  border-left: 4px solid var(--accent-color);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.research-tags strong {
+  color: var(--heading-color);
+}
