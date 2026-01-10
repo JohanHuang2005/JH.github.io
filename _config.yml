@@ -2,7 +2,7 @@
 title: Youhan Huang's Personal Homepage  # 替换为你的名字
 description: Personal homepage of Youhan Huang, a third-year undergraduate student with research interests in 3D computer vision, point cloud understanding, and AI applications  # 替换为你的网站描述
 url: https://youhanhuang.github.io  # 替换为你的GitHub Pages URL
-avatar: /avatar.jpeg
+avatar: /me.jpg
 paginate: 5
 permalink: pretty
 cover_image: /bg.jpeg
