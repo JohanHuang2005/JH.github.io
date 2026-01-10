@@ -14,14 +14,15 @@
 }
 
 .avatar-image {
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
   display: block;
   margin-right: auto;
   margin-left: auto;
   object-fit: cover;
   object-position: center;
+  transform: scale(1);
 }
 
 .masthead-title {
