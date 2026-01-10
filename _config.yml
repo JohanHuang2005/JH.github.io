@@ -34,7 +34,7 @@ logo: logo.png
 social:
   name: Youhan Huang  # 替换为你的名字
   links:
-    - https://github.com/youhanhuang  # 保留你的GitHub链接
+    - https://github.com/JohanHuang2005  # 保留你的GitHub链接
 google_site_verification: xxxxx  # 如果你有Google验证代码，可以添加
 lang: en  # 设置为英文
 
@@ -53,5 +53,5 @@ sass:
 # Specify the author for blog posts
 author:
   name: Youhan Huang  # 替换为你的名字
-  url: https://github.com/youhanhuang/  # 替换为你的GitHub或个人网站
-  email: youhan.huang@se23.qmul.ac.uk  # 替换为你的邮箱
+  url: https://github.com/JohanHuang2005/  # 替换为你的GitHub或个人网站
+  email: 3138766352@qq.com  # 替换为你的邮箱
