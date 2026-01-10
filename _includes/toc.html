@@ -53,7 +53,6 @@
             generate the table of contents and will NOT output the markdown given to it
     {% endcomment %}
 
-    {% capture my_toc %}{% endcapture %}
     {% assign orderedList = include.ordered | default: false %}
     {% assign skipNoIDs = include.skipNoIDs | default: false %}
     {% assign minHeader = include.h_min | default: 1 %}
@@ -61,8 +60,13 @@
     {% assign nodes = include.html | split: '<h' %}
     {% assign firstHeader = true %}
     {% assign previousLevel = 0 %}
+    {% assign listType = 'ul' %}
+    {% if orderedList %}
+        {% assign listType = 'ol' %}
+    {% endif %}
 
-    {% capture listModifier %}{% if orderedList %}1.{% else %}-{% endif %}{% endcapture %}
+    {% capture my_toc %}{% endcapture %}
+    {% assign currentList = '' %}
 
     {% for node in nodes %}
         {% if node == "" %}
@@ -108,73 +112,67 @@
         {% assign header = _workspace[0] | replace: _hAttrToStrip, '' %}
 
         {% assign indentAmount = headerLevel | minus: minHeader %}
-        {% assign space = '' %}
-        {% for i in (1..indentAmount) %}
-            {% assign space = space | prepend: '    ' %}
-        {% endfor %}
+
+        <!-- Close lists for deeper levels -->
+        {% if previousLevel > indentAmount %}
+            {% for i in (1..(previousLevel - indentAmount)) %}
+                {% capture my_toc %}{{ my_toc }}</{{ listType }}></li>{% endcapture %}
+            {% endfor %}
+        {% endif %}
+
+        <!-- Open new list for this level -->
+        {% if previousLevel < indentAmount %}
+            {% capture my_toc %}{{ my_toc }}<{{ listType }}>{% endcapture %}
+        {% elsif previousLevel > 0 %}
+            <!-- Close previous list item if not first item -->
+            {% capture my_toc %}{{ my_toc }}</li>{% endcapture %}
+        {% endif %}
 
         {% if include.item_class and include.item_class != blank %}
-            {% capture listItemClass %}{:.{{ include.item_class | replace: '%level%', headerLevel }}}{% endcapture %}
+            {% capture listItemClass %}class="{{ include.item_class | replace: '%level%', headerLevel }}"{% endcapture %}
         {% endif %}
 
         {% capture anchor_body %}{% if include.sanitize %}{{ header | strip_html }}{% else %}{{ header }}{% endif %}{% endcapture %}
-        {% capture anchor_body %}{{ anchor_body | replace: "|", "\|" }}{% endcapture %}
 
         {% if html_id %}
-            {% capture list_item %}<a href="#{{ html_id }}">{{ anchor_body }}</a>{% endcapture %}
+            {% if include.anchor_class and include.anchor_class != blank %}
+                {% capture list_item %}<a href="#{{ html_id }}" class="{{ include.anchor_class }}">{{ anchor_body }}</a>{% endcapture %}
+            {% else %}
+                {% capture list_item %}<a href="#{{ html_id }}">{{ anchor_body }}</a>{% endcapture %}
+            {% endif %}
         {% elsif skipNoIDs == true %}
             {% continue %}
         {% else %}
             {% capture list_item %}{{ anchor_body }}{% endcapture %}
         {% endif %}
 
-        <!--
-        If we have a submenu class and we're unindenting, then we need to add a "closing" class to this group of bullet
-        points
-        -->
-        {% if include.submenu_class and previousLevel > indentAmount %}
-            <!--
-            `space` is the current indentation, so we if want to close off the previous grouping, we need to add one
-            more level of indentation 
-            -->
-            {% assign submenuIndentation = space | prepend: '    ' %}
-
-            {% capture my_toc %}{{ my_toc }}
-{{ submenuIndentation }}{:.{{ include.submenu_class | replace: '%level%', previousLevel }}}{% endcapture %}
-        {% endif %}
-
-        {% capture my_toc %}{{ my_toc }}
-{{ space }}{{ listModifier }} {{ listItemClass }} {{ list_item }}{% if include.anchor_class %}{:.{{ include.anchor_class }}}{% endif %}{% endcapture %}
+        <!-- Start new list item -->
+        {% capture my_toc %}{{ my_toc }}<li {{ listItemClass }}>{{ list_item }}{% endcapture %}
 
         {% assign previousLevel = indentAmount %}
     {% endfor %}
 
-    {% if include.class and include.class != blank %}
-        {% capture my_toc %}{:.{{ include.class }}}
-{{ my_toc | lstrip }}{% endcapture %}
+    <!-- Close all remaining lists -->
+    {% for i in (1..previousLevel) %}
+        {% capture my_toc %}{{ my_toc }}</li></{{ listType }}>{% endcapture %}
+    {% endfor %}
+
+    <!-- Add closing tag for last list item if there are any items -->
+    {% if previousLevel > 0 %}
+        {% capture my_toc %}{{ my_toc }}</li>{% endcapture %}
     {% endif %}
 
-    {% if include.id %}
-        {% capture my_toc %}{: #{{ include.id }}}
-{{ my_toc | lstrip }}{% endcapture %}
-    {% endif %}
-
-    <!--
-    If we have a submenu class, we need to close off all the remaining list item groups so that submenu classes are
-    applied correctly to them
-    -->
-    {% if include.submenu_class != blank %}
-        <!-- The last level of indentation that we were at, we need to work backwards from there closing each group -->
-        {% for i in (1..previousLevel) %}
-            {% assign lvl = previousLevel | plus: 1 | minus: i %} <!-- Invert the indent level based on `i` -->
-            {% assign closingSpace = '' %}
-
-            {% for i in (1..lvl) %}
-                {% assign closingSpace = closingSpace | prepend: '    ' %}
-            {% endfor %}
-
-            {% capture my_toc %}{{ my_toc }}
-{{ closingSpace }}{:.{{ include.submenu_class | replace: '%level%', lvl }}}{% endcapture %}
-        {% endfor %}
+    <!-- Wrap with container class and ID if provided -->
+    {% if include.class or include.id %}
+        {% capture containerAttrs %}{% endcapture %}
+        {% if include.id %}
+            {% capture containerAttrs %}{{ containerAttrs }} id="{{ include.id }}"{% endcapture %}
+        {% endif %}
+        {% if include.class %}
+            {% capture containerAttrs %}{{ containerAttrs }} class="{{ include.class }}"{% endcapture %}
+        {% endif %}
+        {% capture my_toc %}<{{ listType }}{{ containerAttrs }}>{{ my_toc }}</{{ listType }}>{% endcapture %}
+    {% else %}
+        {% capture my_toc %}<{{ listType }}>{{ my_toc }}</{{ listType }}>{% endcapture %}
     {% endif %}
 {% endcapture %}{% assign tocWorkspace = '' %}{{ my_toc | strip }}
