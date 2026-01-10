@@ -92,7 +92,7 @@
         });
         
         // 设置背景过渡效果
-        sidebar.style.transition = 'opacity 0.5s ease-in-out';
+        sidebar.style.transition = 'opacity 1.5s ease-in-out';
         
         let currentIndex = 0;
         
@@ -109,15 +109,15 @@
             
             // 更新索引
             currentIndex = (currentIndex + 1) % backgroundImages.length;
-          }, 300);
+          }, 1500);
         }
 
         // 设置初始背景（使用第一张图片）
         sidebar.style.backgroundImage = `url(${backgroundImages[0]})`;
         sidebar.style.opacity = '1';
         
-        // 设置定时器，每5秒更换一次背景
-        setInterval(changeBackground, 5000);
+        // 设置定时器，每30秒更换一次背景
+        setInterval(changeBackground, 30000);
       });
     </script>
   </body>

@@ -8,9 +8,9 @@ Hello! I'm Youhan Huang, a third-year undergraduate student with a strong passio
 
 ### Contact Information
 - **Location**: Beijing, China
-- **Email**: youhan.huang@se23.qmul.ac.uk
+- **Email**: 3138766352@qq.com
 - **Phone**: +86 13501173033
-- **GitHub**: [github.com/youhanhuang](https://github.com/youhanhuang)
+- **GitHub**: [github.com/JohanHuang2005](https://github.com/JohanHuang2005)
 
 ### Education Background
 **Beijing University of Posts and Telecommunications & Queen Mary University of London (joint program)**
