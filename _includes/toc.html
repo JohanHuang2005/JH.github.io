@@ -105,7 +105,7 @@
 
         {% if firstHeader %}
             {% assign firstHeader = false %}
-            {% assign minHeader = headerLevel %}
+            <!-- Keep the original minHeader from include parameters -->
         {% endif %}
 
         {% capture _hAttrToStrip %}{{ _workspace[0] | split: '>' | first }}>{% endcapture %}
