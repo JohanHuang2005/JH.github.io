@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About Me
+toc: true
 ---
 
 Hello! I'm Youhan Huang, a third-year undergraduate student with a strong passion for 3D computer vision, point cloud understanding, and AI applications.
