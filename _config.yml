@@ -2,7 +2,7 @@
 title: Youhan's Homepage  # 简洁的网站标题，类似导师的格式
 description: Personal homepage of Youhan Huang, a third-year undergraduate student specializing in 3D computer vision, point cloud understanding, and AI applications  # 优化描述，包含关键词
 url: https://youhanhuang.github.io  # 目标URL（需要在GitHub上重命名仓库实现）
-avatar: /me.jpg
+avatar: /me2.jpg
 paginate: 5
 permalink: pretty
 # cover_image: /bg.jpeg  # 注释掉，使用JavaScript动态背景
