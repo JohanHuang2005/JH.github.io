@@ -45,28 +45,38 @@
     <script>
       // 动态背景更换功能
       document.addEventListener('DOMContentLoaded', function() {
-        // 获取所有背景图片路径（已重命名为数字）
+        // 定义背景图片数组（已重命名为数字）
         const backgroundImages = [
           '/bg/1.jpg', '/bg/2.jpg', '/bg/3.jpg', '/bg/4.jpg', '/bg/5.jpg',
           '/bg/6.jpg', '/bg/7.jpg', '/bg/8.jpg', '/bg/9.jpg', '/bg/10.jpg',
           '/bg/11.jpg', '/bg/12.jpg', '/bg/13.jpg', '/bg/14.jpg', '/bg/15.jpg',
           '/bg/16.jpg', '/bg/17.jpg', '/bg/18.jpg', '/bg/19.jpg', '/bg/20.jpg'
         ];
-
-        let currentIndex = 0;
-        const sidebar = document.getElementById('sidebar-left');
         
-        // 预加载所有图片
-        const preloadImages = [];
-        backgroundImages.forEach(imgSrc => {
-          const img = new Image();
-          img.src = imgSrc;
-          preloadImages.push(img);
-        });
-
+        // 获取侧边栏的正确元素
+        const sidebar = document.querySelector('.sidebar-left');
+        
+        // 确保侧边栏元素存在
+        if (!sidebar) {
+          console.error('Sidebar element not found!');
+          return;
+        }
+        
+        // 设置侧边栏为相对定位，以便背景图片能正确显示
+        sidebar.style.position = 'relative';
+        sidebar.style.zIndex = '1';
+        
+        // 确保侧边栏背景样式正确
+        sidebar.style.backgroundSize = 'cover';
+        sidebar.style.backgroundPosition = 'center';
+        sidebar.style.backgroundRepeat = 'no-repeat';
+        sidebar.style.transition = 'opacity 0.5s ease-in-out';
+        
+        let currentIndex = 0;
+        
         // 更换背景图片的函数
         function changeBackground() {
-          // 淡出效果
+          // 淡入淡出效果
           sidebar.style.opacity = '0.7';
           
           setTimeout(() => {
@@ -83,27 +93,23 @@
           }, 500);
         }
 
-        // 确保侧边栏背景样式正确
-        sidebar.style.backgroundSize = 'cover';
-        sidebar.style.backgroundPosition = 'center';
-        sidebar.style.backgroundRepeat = 'no-repeat';
-        sidebar.style.transition = 'opacity 0.5s ease-in-out';
-        
         // 设置初始背景（使用第一张图片）
         sidebar.style.backgroundImage = `url(${backgroundImages[0]})`;
         
         // 调试：检查图片路径是否正确
         console.log('Background images loaded:', backgroundImages);
         console.log('Current background:', backgroundImages[0]);
+        console.log('Sidebar element:', sidebar);
+        console.log('Sidebar background style:', sidebar.style.backgroundImage);
         
-        // 设置定时器，每10秒更换一次背景
-        setInterval(changeBackground, 10000);
+        // 设置定时器，每5秒更换一次背景
+        setInterval(changeBackground, 5000);
         
-        // 首次更换背景（5秒后开始）
+        // 首次更换背景（2秒后开始）
         setTimeout(() => {
           currentIndex = 1; // 从第二张图片开始
           changeBackground();
-        }, 5000);
+        }, 2000);
       });
     </script>
   </body>
